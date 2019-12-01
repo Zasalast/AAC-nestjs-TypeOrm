@@ -32,13 +32,14 @@ export class ActividadController {
     return await this.actividadService.findOne({slug});
   }
 
-  @ApiOperation({ title: 'Create actividad' })
+/*   @ApiOperation({ title: 'Create actividad' })
   @ApiResponse({ status: 201, description: 'The actividad has been successfully created.'})
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Post()
   async create( @Param('actividad') actividadData: CreateActividadDto) {
-    return this.actividadService.create( actividadData);
-  } /* async create(@User('id') userId: number, @Body('actividad') actividadData: CreateActividadDto) {
+    return this.actividadService.create( actividadData); 
+  }  */
+/*    async create(@User('id') userId: number, @Body('actividad') actividadData: CreateActividadDto) {
     return this.actividadService.create(userId, actividadData);
   } */
 
@@ -58,7 +59,4 @@ export class ActividadController {
   async delete(@Param() params) {
     return this.actividadService.delete(params.slug);
   }
-
-
-
 }

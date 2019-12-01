@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, getRepository, DeleteResult } from 'typeorm';
 import { UserEntity } from './user.entity';
 import {CreateUserDto, LoginUserDto, UpdateUserDto} from './dto';
-const jwt = require('jsonwebtoken');
+/* const jwt = require('jsonwebtoken'); */
 import { UserRO } from './user.interface';
 import { validate } from 'class-validator';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
@@ -30,7 +30,7 @@ export class UserService {
     return await this.userRepository.findOne(findOneOptions);
   }
 
-  async create(dto: CreateUserDto): Promise<UserRO> {
+/*   async create(dto: CreateUserDto): Promise<UserRO> {
 
     // check uniqueness of username/email
     const {username, email, password} = dto;
@@ -54,7 +54,7 @@ export class UserService {
     newUser.password = password;
     newUser.actividades = [];
 
-    const errors = await validate(newUser);
+     const errors = await validate(newUser);
     if (errors.length > 0) {
       const _errors = {username: 'Userinput is not valid.'};
       throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
@@ -62,9 +62,9 @@ export class UserService {
     } else {
       const savedUser = await this.userRepository.save(newUser);
       return this.buildUserRO(savedUser);
-    }
+    } 
 
-  }
+  } */
 
   async update(id: number, dto: UpdateUserDto): Promise<UserEntity> {
     let toUpdate = await this.userRepository.findOne(id);
@@ -79,7 +79,7 @@ export class UserService {
     return await this.userRepository.delete({ email: email});
   }
 
-  async findById(id: number): Promise<UserRO>{
+ /*  async findById(id: number): Promise<UserRO>{
     const user = await this.userRepository.findOne(id);
 
     if (!user) {
@@ -88,14 +88,14 @@ export class UserService {
     };
 
     return this.buildUserRO(user);
-  }
+  } */
 
-  async findByEmail(email: string): Promise<UserRO>{
+/*   async findByEmail(email: string): Promise<UserRO>{
     const user = await this.userRepository.findOne({email: email});
     return this.buildUserRO(user);
-  }
+  } */
 
-  public generateJWT(user) {
+  /* public generateJWT(user) {
     let today = new Date();
     let exp = new Date(today);
     exp.setDate(today.getDate() + 60);
@@ -106,9 +106,9 @@ export class UserService {
       email: user.email,
       exp: exp.getTime() / 1000,
     }, SECRET);
-  };
+  }; */
 
-  private buildUserRO(user: UserEntity) {
+/*   private buildUserRO(user: UserEntity) {
     const userRO = {
       username: user.username,
       email: user.email,
@@ -118,5 +118,5 @@ export class UserService {
     };
 
     return {user: userRO};
-  }
+  } */
 }

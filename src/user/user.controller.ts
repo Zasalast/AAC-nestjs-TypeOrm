@@ -32,10 +32,10 @@ export class UserController {
   } */
 
  /*  @UsePipes(new ValidationPipe()) */
-  @Post('users')
+/*   @Post('users')
   async create(@Body('user') userData: CreateUserDto) {
     return this.userService.create(userData);
-  }
+  } */
 
   @Delete('users/:slug')
   async delete(@Param() params) {
@@ -43,7 +43,7 @@ export class UserController {
   }
 
   /* @UsePipes(new ValidationPipe()) */
-  @Post('users/login')
+/*   @Post('users/login')
   async login(@Body('user') loginUserDto: LoginUserDto): Promise<UserRO> {
     const _user = await this.userService.findOne(loginUserDto);
 
@@ -54,5 +54,5 @@ export class UserController {
     const {email, username, bio, imagen} = _user;
     const user = {email, token, username, bio, imagen};
     return {user}
-  }
+  } */
 }
