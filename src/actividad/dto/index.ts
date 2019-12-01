@@ -1,0 +1,1 @@
+export { CreateActividadDto } from './create-actividad.dto';
